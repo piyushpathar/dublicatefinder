@@ -1,1 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload .docx File</title>
+    <style>
+        body {
+            font-family: 'Shruti', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        label,
+        button[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        label {
+            background-color: #007bff;
+            color: #fff;
+            display: inline-block;
+        }
+
+        label:hover {
+            background-color: #0056b3;
+        }
+
+        button[type="submit"] {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            font-size: 16px;
+            padding: 15px 20px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Upload .docx File</h1>
+        <p>Select a .docx file from your computer to check for duplicate lines.</p>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" id="fileInput" accept=".docx" onchange="updateFileName(this)">
+            <label for="fileInput" id="fileLabel">choose file</label>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+
+    <script>
+        function updateFileName(input) {
+            var fileName = input.files[0].name;
+            document.getElementById("fileLabel").innerText = fileName;
+        }
+    </script>
+</body>
+
+</html>
